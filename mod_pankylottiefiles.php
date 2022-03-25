@@ -18,5 +18,5 @@ if ($params->def('prepare_content', 1))
 	PluginHelper::importPlugin('content');
 	$module->content = HTMLHelper::_('content.prepare', $module->content, '', 'mod_pankylottiefiles.content');
 }
-
+//load view
 require ModuleHelper::getLayoutPath('mod_pankylottiefiles', $params->get('layout', 'default'));
