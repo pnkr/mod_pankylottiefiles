@@ -17,7 +17,7 @@ $modId 	= 'mod_pankylottiefiles' . $module->id;
 
 /** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
 $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-$wa->registerScript('pankylottiefiles.script', 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js');
+$wa->registerScript('pankylottiefiles.script', 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js', [], ['defer' => true]);
 $wa->useScript('pankylottiefiles.script');
 
 if ($params->get('backgroundimage'))
