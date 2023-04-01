@@ -1,0 +1,14 @@
+{
+    "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+    "name": "xxx",
+    "version": "4.0.0",
+    "description": "This file contains details of the assets of the Panky Lottie Files Module.",
+    "license": "GPL-2.0-or-later",
+    "assets": [
+        {
+            "name": "pankylottiefiles.script",
+            "type": "script",
+            "uri": "lottie-player.js"
+        }
+    ]
+}
