@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package     Joomla.Site
  * @subpackage  mod_pankylottiefiles
@@ -9,45 +10,25 @@
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Factory;
-use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Uri\Uri;
-
 $modId 	= 'mod_pankylottiefiles' . $module->id;
-
-/** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
-$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-$wa->registerScript('pankylottiefiles.script', 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js', [], ['defer' => true]);
-$wa->useScript('pankylottiefiles.script');
-
-if ($params->get('backgroundimage'))
-{
-
-	$wa->addInlineStyle('
-#' . $modId . '{background-image: url("' . Uri::root(true) . '/' . HTMLHelper::_('cleanImageURL', $params->get('backgroundimage'))->url . '");}
-', ['name' => $modId]);
-};
 
 ?>
 
+
+<?php if($params->get('jsonlottie')) { //run the code below only if there is a lottie file inserted ?> 
 <div id="<?php echo $modId; ?>" class="mod_pankylottiefiles">
-<lottie-player 
-	src="<?php echo $params->get('jsonlottie'); ?>"  
-	background="<?php echo $params->get('backgroundcolor','transparent'); ?>"  
-	speed="<?php echo $params->get('speed','1'); ?>"  
-	style="width: <?php echo $params->get('width'); ?>; height: <?php echo $params->get('height'); ?>;"  
-	<?php 
-		if($params->get('loop')){
-			echo " loop ";
-		};
-		if($params->get('controls')){
-			echo " controls ";
-		};
-		if($params->get('autoplay')){
-			echo " autoplay ";
-		};
-	?>
->
-</lottie-player>
+	<lottie-player 
+		src="<?php echo $params->get('jsonlottie'); ?> " 
+		background="<?php echo $params->get('backgroundcolor', 'transparent'); ?> " 
+		speed="<?php echo $params->get('speed', '1'); ?> " 
+		playmode="<?php echo $params->get('playmode', 'normal'); ?> " 
+		direction="<?php echo $params->get('direction', 'forwards'); ?> " 
+		<?php echo " " . $params->get('autoplay', 'no-autoplay'); ?> 
+		<?php echo " " . $params->get('loop', 'no-loop'); ?> 
+		<?php echo " " . $params->get('hover', 'no-hover'); ?>  
+		<?php echo " " . $params->get('controls', 'no-controls'); ?> 
+		 style="width: <?php echo $params->get('width'); ?>; height: <?php echo $params->get('height'); ?>;">
+	</lottie-player>
 	<?php echo $module->content; ?>
 </div>
+<?php } ?>
