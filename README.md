@@ -83,10 +83,3 @@ mod_pankylottiefiles/
 plg_content_pankylottie/
 plg_editors-xtd_pankylottie/
 ```
-
-## Releasing
-
-1. Bump `<version>` in the four manifests.
-2. Run `./build.ps1`.
-3. Create the GitHub release `v<version>` and attach `dist/pkg_pankylottie-<version>.zip`.
-4. Commit the regenerated `update.xml`. Sites then see the update in Joomla's updater.
